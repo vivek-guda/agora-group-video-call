@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import { Button } from "@material-ui/core";
+import VideoCall from "./VideoCall";
 
 function App() {
+  const [inCall, setInCall] = useState(false);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {inCall ? (
+        <VideoCall setInCall={setInCall} />
+      ) : (
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setInCall(true)}
         >
-          Learn React
-        </a>
-      </header>
+          Join
+        </Button>
+      )}
     </div>
   );
 }
